@@ -28,33 +28,6 @@ train_y = train.Species # output of the training data
 test_X = test[['SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm']] # taking test data feature
 test_y = test.Species # output value of the test data
 
-model = svm.SVC() # select the svm algorithm
-
-# we train the algorithm with training data and training output
-model.fit(train_X, train_y)
-
-# we pass the testing data to the stored algorithm to predict the outcome
-prediction = model.predict(test_X)
-accuracy_all = metrics.accuracy_score(prediction, test_y)
-print('The accuracy of the SVM is: ', accuracy_all)# we check the accuracy of the algorithm
-#we pass the predicted output by the model and the actual output
-
-# model = LogisticRegression()
-# model.fit(train_X, train_y)
-# prediction = model.predict(test_X)
-# print('The accuracy of Logistic Regression is: ', metrics.accuracy_score(prediction, test_y))
-
-# model = DecisionTreeClassifier()
-# model.fit(train_X, train_y)
-# prediction = model.predict(test_X)
-# print('The accuracy of Decision Tree is: ', metrics.accuracy_score(prediction, test_y))
-
-# model = KNeighborsClassifier(n_neighbors=3) # this examines 3 neighbors for putting the data into class
-# model.fit(train_X, train_y)
-# prediction = model.predict(test_X)
-
-# print('The accuracy of KNN is: ', metrics.accuracy_score(prediction, test_y))
-
 petal = iris[['PetalLengthCm','PetalWidthCm','Species']]
 sepal = iris[['SepalLengthCm','SepalWidthCm','Species']]
 
@@ -72,6 +45,16 @@ train_y_s = train_s.Species
 test_x_s = test_s[['SepalWidthCm','SepalLengthCm']]
 test_y_s = test_s.Species
 
+
+model = svm.SVC() # select the svm algorithm
+
+# we train the algorithm with training data and training output
+model.fit(train_X, train_y)
+
+# we pass the testing data to the stored algorithm to predict the outcome
+prediction = model.predict(test_X)
+accuracy_all = metrics.accuracy_score(prediction, test_y)
+print('The accuracy of the SVM is: ', accuracy_all)# we check the accuracy of the algorithm
 model=svm.SVC()
 model.fit(train_x_p,train_y_p) 
 prediction=model.predict(test_x_p) 
@@ -85,9 +68,12 @@ accuracy_sepal = metrics.accuracy_score(prediction, test_y_s)
 
 print('The accuracy of the SVM using Sepals is:',accuracy_sepal)
 
-# Now print to file
-with open("metrics.json", 'w') as outfile:
-        json.dump({ "complete": accuracy_all, "petal": accuracy_petal, "sepal": accuracy_sepal}, outfile)
+
+# model = LogisticRegression()
+# model.fit(train_X, train_y)
+# prediction = model.predict(test_X)
+# print('The accuracy of Logistic Regression is: ', metrics.accuracy_score(prediction, test_y))
+
 # model = LogisticRegression()
 # model.fit(train_x_p,train_y_p) 
 # prediction=model.predict(test_x_p) 
@@ -96,6 +82,24 @@ with open("metrics.json", 'w') as outfile:
 # model.fit(train_x_s,train_y_s) 
 # prediction=model.predict(test_x_s) 
 # print('The accuracy of the Logistic Regression using Sepals is:',metrics.accuracy_score(prediction,test_y_s))
+
+
+# model = DecisionTreeClassifier()
+# model.fit(train_X, train_y)
+# prediction = model.predict(test_X)
+# print('The accuracy of Decision Tree is: ', metrics.accuracy_score(prediction, test_y))
+
+# model = KNeighborsClassifier(n_neighbors=3) # this examines 3 neighbors for putting the data into class
+# model.fit(train_X, train_y)
+# prediction = model.predict(test_X)
+
+# print('The accuracy of KNN is: ', metrics.accuracy_score(prediction, test_y))
+
+
+
+# Now print to file
+with open("metrics.json", 'w') as outfile:
+        json.dump({ "complete": accuracy_all, "petal": accuracy_petal, "sepal": accuracy_sepal}, outfile)
 
 # model=DecisionTreeClassifier()
 # model.fit(train_x_p,train_y_p) 
