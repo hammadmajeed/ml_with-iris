@@ -10,6 +10,8 @@ stages:
     deps:
     - train.py
     - data_raw.csv
+    params:
+    - epochs
     outs:
     - by_feature.png
     metrics:

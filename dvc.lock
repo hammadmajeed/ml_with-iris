@@ -21,8 +21,11 @@ stages:
       size: 4613
     - path: train.py
       hash: md5
-      md5: cc2d9ebdf5ea2eac36326dfd965dde9d
-      size: 5199
+      md5: a88163e7c26f08f422b99bb0bbc95cb6
+      size: 5139
+    params:
+      params.yaml:
+        epochs: 900
     outs:
     - path: by_feature.png
       hash: md5
